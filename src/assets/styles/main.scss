@@ -1,0 +1,127 @@
+@import 'variables';
+@import 'mixins';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+.app-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: $primary-color;
+  }
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+
+  @include respond-to('medium') {
+    grid-template-columns: 1fr;
+  }
+}
+
+.signal-display, .trade-history, .control-panel {
+  background: $panel-bg;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: $shadow;
+}
+
+.signal {
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 20px;
+
+  &.buy {
+    background-color: rgba(40, 167, 69, 0.2);
+    border: 1px solid rgba(40, 167, 69, 0.5);
+  }
+
+  &.sell {
+    background-color: rgba(220, 53, 69, 0.2);
+    border: 1px solid rgba(220, 53, 69, 0.5);
+  }
+
+  &.idle {
+    background-color: rgba(108, 117, 125, 0.2);
+    border: 1px solid rgba(108, 117, 125, 0.5);
+  }
+}
+
+.active-trade {
+  padding: 15px;
+  background: rgba(255, 193, 7, 0.2);
+  border: 1px solid rgba(255, 193, 7, 0.5);
+  border-radius: 8px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid $border-color;
+  }
+
+  tr.profit {
+    background-color: rgba(40, 167, 69, 0.1);
+  }
+
+  tr.loss {
+    background-color: rgba(220, 53, 69, 0.1);
+  }
+}
+
+.control-panel {
+  select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 4px;
+    border: 1px solid $border-color;
+  }
+
+  button {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+
+    &.start {
+      background-color: $success-color;
+    }
+
+    &.stop {
+      background-color: $danger-color;
+    }
+
+    &:disabled {
+      background-color: $disabled-color;
+      cursor: not-allowed;
+    }
+  }
+}

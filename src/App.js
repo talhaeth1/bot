@@ -1,24 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+ 
+import ControlPanel from './components/ControlPanel/ControlPanel'
+import SignalDisplay from './components/SignalDisplay/SignalDisplay';
+import TradeHistory from './components/TradeHistory/TradeHistory';
+import { TradingProvider } from './components/contexts/TradingContext';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <TradingProvider>
+      <div className="app-container">
+        <h1>Bot</h1>
+        <div className="dashboard">
+          
+          <ControlPanel/>
+          <SignalDisplay />
+          <TradeHistory />
+        </div>
+      </div>
+    </TradingProvider>
   );
 }
 
